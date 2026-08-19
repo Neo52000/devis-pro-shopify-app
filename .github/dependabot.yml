@@ -55,3 +55,12 @@ updates:
           - "*"
         update-types:
           - "patch"
+
+    # Pas de suite de tests automatisée pour l'instant : les mises à jour
+    # majeures ne doivent jamais être auto-mergées sans revue manuelle.
+    # `@shopify/shopify-app-react-router` ne supporte que react-router v7
+    # (peerDependency ^7.6.2) — un bump majeur casserait le build.
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"

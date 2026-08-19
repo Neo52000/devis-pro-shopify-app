@@ -46,7 +46,7 @@
     "@shopify/api-codegen-preset": "^2.0.0",
     "@shopify/polaris-types": "1.0.7",
     "@types/eslint": "^9.6.1",
-    "@types/node": "^25.5.2",
+    "@types/node": "^26.1.2",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@typescript-eslint/eslint-plugin": "^8.66.0",

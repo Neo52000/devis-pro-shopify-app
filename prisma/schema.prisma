@@ -54,6 +54,10 @@ model QuoteRequest {
   // Réponse Shopify après conversion en commande brouillon
   draftOrderId  String?
   draftOrderUrl String?
+  // Renseignés par le webhook orders/create une fois la commande brouillon
+  // effectivement payée par le client (voir webhooks.orders.create.tsx)
+  orderId       String?
+  orderName     String?
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
 

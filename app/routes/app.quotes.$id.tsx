@@ -44,7 +44,10 @@ export const action = async ({ request, params }: ActionFunctionArgs) => {
       variables: {
         input: {
           email: quote.customerEmail,
-          note: `Devis converti depuis Devis Pro — ${quote.companyName ?? quote.customerName}`,
+          // L'id du devis est inclus dans la note pour permettre au webhook
+          // orders/create de retrouver ce devis de façon fiable une fois la
+          // commande brouillon payée (voir webhooks.orders.create.tsx).
+          note: `Devis Pro #${quote.id} — ${quote.companyName ?? quote.customerName}`,
           lineItems: quote.lineItems.map((item) => ({
             variantId: item.variantId,
             quantity: item.quantity,
@@ -145,6 +148,12 @@ export default function QuoteDetail() {
           <s-link href={quote.draftOrderUrl} target="_blank">
             Ouvrir la commande brouillon
           </s-link>
+        </s-section>
+      )}
+
+      {quote.orderName && (
+        <s-section heading="Commande payée" slot="aside">
+          <s-paragraph>{quote.orderName}</s-paragraph>
         </s-section>
       )}
     </s-page>

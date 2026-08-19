@@ -31,9 +31,9 @@ export default function QuotesIndex() {
       <s-section heading={`${quotes.length} demande(s)`}>
         {quotes.length === 0 ? (
           <s-paragraph>
-            Aucune demande de devis pour le moment. Une fois le bloc "Demander
-            un devis" installé dans le thème, les demandes clients
-            apparaîtront ici.
+            Aucune demande de devis pour le moment. Une fois le bloc
+            &quot;Demander un devis&quot; installé dans le thème, les demandes
+            clients apparaîtront ici.
           </s-paragraph>
         ) : (
           <s-table>

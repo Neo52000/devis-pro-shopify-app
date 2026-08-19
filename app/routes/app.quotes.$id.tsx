@@ -93,7 +93,10 @@ export default function QuoteDetail() {
   const convertToOrder = () => fetcher.submit({}, { method: "POST" });
 
   return (
-    <s-page heading={`Devis — ${quote.customerName}`} backAction="/app/quotes">
+    <s-page heading={`Devis — ${quote.customerName}`}>
+      <s-link slot="breadcrumb-actions" href="/app/quotes">
+        Devis
+      </s-link>
       <s-button
         slot="primary-action"
         onClick={convertToOrder}

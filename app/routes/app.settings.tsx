@@ -50,17 +50,10 @@ export default function Settings() {
     }
   }, [fetcher.data, shopify]);
 
-  const save = (formData: FormData) => fetcher.submit(formData, { method: "POST" });
-
   return (
     <s-page heading="Paramètres">
       <s-section heading="Comportement des prix">
-        <s-form
-          onSubmit={(event: SubmitEvent) => {
-            event.preventDefault();
-            save(new FormData(event.target as HTMLFormElement));
-          }}
-        >
+        <fetcher.Form method="post">
           <s-stack direction="block" gap="base">
             <s-checkbox
               name="hidePricesEnabled"
@@ -73,23 +66,22 @@ export default function Settings() {
               label="Libellé du bouton de devis"
               defaultValue={settings.quoteButtonLabel}
             />
-            <s-text-field
+            <s-email-field
               name="notificationEmail"
               label="Email de notification des nouvelles demandes"
-              type="email"
               defaultValue={settings.notificationEmail ?? ""}
             />
             <s-button type="submit" variant="primary">
               Enregistrer
             </s-button>
           </s-stack>
-        </s-form>
+        </fetcher.Form>
       </s-section>
 
       <s-section slot="aside" heading="Étapes suivantes">
         <s-paragraph>
-          Installez le bloc "Demander un devis" dans le thème (App embed) pour
-          activer le formulaire côté boutique.
+          Installez le bloc &quot;Demander un devis&quot; dans le thème (App
+          embed) pour activer le formulaire côté boutique.
         </s-paragraph>
       </s-section>
     </s-page>

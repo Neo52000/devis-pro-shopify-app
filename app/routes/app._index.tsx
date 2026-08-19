@@ -26,7 +26,7 @@ export default function Index() {
       </s-button>
 
       <s-section heading="Vue d'ensemble">
-        <s-stack direction="inline" gap="loose">
+        <s-stack direction="inline" gap="large">
           <s-box padding="base" borderWidth="base" borderRadius="base">
             <s-heading>{total}</s-heading>
             <s-paragraph>Devis total</s-paragraph>
@@ -45,8 +45,8 @@ export default function Index() {
       <s-section heading="Mise en route">
         <s-unordered-list>
           <s-list-item>
-            Activez le bloc "Demander un devis" dans l'éditeur de thème
-            (App embeds).
+            Activez le bloc &quot;Demander un devis&quot; dans l&apos;éditeur
+            de thème (App embeds).
           </s-list-item>
           <s-list-item>
             Configurez le masquage des prix et le libellé du bouton dans{" "}

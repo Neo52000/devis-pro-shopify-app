@@ -11,13 +11,24 @@
   data-product-title="{{ product.title | escape }}"
   data-product-sku="{{ product.selected_or_first_available_variant.sku | escape }}"
 >
-  <button type="button" class="devis-pro-quote-button">
+  <button
+    type="button"
+    class="devis-pro-quote-button"
+    aria-haspopup="dialog"
+    aria-controls="devis-pro-quote-dialog-{{ block.id }}"
+  >
     {{ block.settings.button_label | default: "Demander un devis" }}
   </button>
 
-  <dialog class="devis-pro-quote-dialog">
+  <dialog
+    id="devis-pro-quote-dialog-{{ block.id }}"
+    class="devis-pro-quote-dialog"
+    aria-labelledby="devis-pro-quote-title-{{ block.id }}"
+  >
     <form method="dialog" class="devis-pro-quote-form">
-      <h3>{{ block.settings.button_label | default: "Demander un devis" }}</h3>
+      <h3 id="devis-pro-quote-title-{{ block.id }}">
+        {{ block.settings.button_label | default: "Demander un devis" }}
+      </h3>
 
       <label>
         Nom
@@ -48,7 +59,7 @@
         <button type="button" class="devis-pro-quote-cancel">Annuler</button>
         <button type="submit" class="devis-pro-quote-submit">Envoyer la demande</button>
       </div>
-      <p class="devis-pro-quote-status" hidden></p>
+      <p class="devis-pro-quote-status" role="status" aria-live="polite" hidden></p>
     </form>
   </dialog>
 </div>

@@ -1,0 +1,6 @@
+name = "Devis Pro — Bloc devis"
+type = "theme"
+
+[[metafields]]
+namespace = "devis_pro"
+key = "hide_price"

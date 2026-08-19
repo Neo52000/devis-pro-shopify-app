@@ -1,0 +1,71 @@
+{% comment %}
+  Bloc "Demander un devis" — Devis Pro
+  À ajouter sur le template produit via l'éditeur de thème (Sections > Ajouter un bloc).
+  Poste vers /apps/devis-pro/quote-request (App Proxy signé).
+{% endcomment %}
+
+<div
+  class="devis-pro-quote-block"
+  data-product-id="{{ product.id }}"
+  data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+  data-product-title="{{ product.title | escape }}"
+  data-product-sku="{{ product.selected_or_first_available_variant.sku | escape }}"
+>
+  <button type="button" class="devis-pro-quote-button">
+    {{ block.settings.button_label | default: "Demander un devis" }}
+  </button>
+
+  <dialog class="devis-pro-quote-dialog">
+    <form method="dialog" class="devis-pro-quote-form">
+      <h3>{{ block.settings.button_label | default: "Demander un devis" }}</h3>
+
+      <label>
+        Nom
+        <input type="text" name="customerName" required>
+      </label>
+      <label>
+        Email
+        <input type="email" name="customerEmail" required>
+      </label>
+      <label>
+        Téléphone
+        <input type="tel" name="customerPhone">
+      </label>
+      <label>
+        Société
+        <input type="text" name="companyName">
+      </label>
+      <label>
+        Quantité souhaitée
+        <input type="number" name="quantity" min="1" value="1" required>
+      </label>
+      <label>
+        Message (optionnel)
+        <textarea name="message"></textarea>
+      </label>
+
+      <div class="devis-pro-quote-actions">
+        <button type="button" class="devis-pro-quote-cancel">Annuler</button>
+        <button type="submit" class="devis-pro-quote-submit">Envoyer la demande</button>
+      </div>
+      <p class="devis-pro-quote-status" hidden></p>
+    </form>
+  </dialog>
+</div>
+
+<script src="{{ 'quote-form.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Devis Pro — Demander un devis",
+  "target": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Libellé du bouton",
+      "default": "Demander un devis"
+    }
+  ]
+}
+{% endschema %}
